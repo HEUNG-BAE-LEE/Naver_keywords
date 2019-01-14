@@ -12,7 +12,7 @@ def fine_variable(alpha):
 
     # 기사 데이터 프레임 로드
     # os 모듈을 이용해서 파일의 경로를 가져옴
-    path = os.path.dirname(os.path.realpath("article_2016-06-01.plk"))
+    path = os.path.dirname(os.path.realpath(__file__))
     print(path)
     article_df = pd.read_pickle("{}/article_2016-06-01.plk".format(path))
 
