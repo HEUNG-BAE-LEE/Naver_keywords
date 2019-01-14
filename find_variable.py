@@ -36,7 +36,7 @@ def find_variable(alpha):
 
 
 def send_slack(msg, channel="#dss", username="model_bot" ):
-    webhook_URL = "https://hooks.slack.com/services/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"
+    webhook_URL = "https://hooks.slack.com/services/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"
     payload = {
         "channel": channel,
         "username": username,
