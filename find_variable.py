@@ -1,4 +1,4 @@
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, HashingVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
@@ -7,13 +7,11 @@ import pandas as pd
 import pickle
 import requests, json, sys, os
 
-
-def fine_variable(alpha):
+def find_variable(alpha):
 
     # 기사 데이터 프레임 로드
-    # os 모듈을 이용해서 파일의 경로를 가져옴
-    path = os.path.dirname(os.path.realpath('__file__'))
-    print(path)
+    path = os.path.dirname(os.path.realpath(__file__))
+    
     article_df = pd.read_pickle("{}/article_2016-06-01.plk".format(path))
 
     # 테스트 데이터와 트레인 데이터 분리
@@ -36,8 +34,9 @@ def fine_variable(alpha):
     send_slack("alpha:{}, accuracy:{}".format(alpha, result))
     return result
 
+
 def send_slack(msg, channel="#dss", username="model_bot" ):
-    webhook_URL = "https://hooks.slack.com/services/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"
+    webhook_URL = "https://hooks.slack.com/services/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"
     payload = {
         "channel": channel,
         "username": username,
@@ -51,5 +50,5 @@ def send_slack(msg, channel="#dss", username="model_bot" ):
     
 # 변수값 설정
 alpha = float(sys.argv[1])
-accuracy = fine_variable(alpha)
+accuracy = find_variable(alpha)
 print(alpha, accuracy)
